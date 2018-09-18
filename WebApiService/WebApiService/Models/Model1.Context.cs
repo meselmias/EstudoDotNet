@@ -26,5 +26,7 @@ namespace WebApiService.Models
         }
     
         public virtual DbSet<cliente> cliente { get; set; }
+        public virtual DbSet<pedido> pedido { get; set; }
+        public virtual DbSet<produto> produto { get; set; }
     }
 }

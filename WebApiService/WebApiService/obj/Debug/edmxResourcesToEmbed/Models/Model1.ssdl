@@ -12,7 +12,60 @@
     <Property Name="telefone" Type="varchar" MaxLength="11" />
     <Property Name="dataCadastro" Type="datetime" />
   </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cliente" Type="int" />
+    <Property Name="produto" Type="int" />
+    <Property Name="observacao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+    <Property Name="preco" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__pedido__cliente__3A81B327">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pedido__produto__3B75D760">
+    <End Role="produto" Type="Self.produto" Multiplicity="0..1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="estudoangularModelStoreContainer">
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="produto" EntityType="Self.produto" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__pedido__cliente__3A81B327" Association="Self.FK__pedido__cliente__3A81B327">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pedido__produto__3B75D760" Association="Self.FK__pedido__produto__3B75D760">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

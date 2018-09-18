@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbContexto" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="endereco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="dataCadastro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="pedido" Relationship="Self.FK__pedido__cliente__3A81B327" FromRole="cliente" ToRole="pedido" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente" Type="Int32" />
+    <Property Name="produto" Type="Int32" />
+    <Property Name="observacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente1" Relationship="Self.FK__pedido__cliente__3A81B327" FromRole="pedido" ToRole="cliente" />
+    <NavigationProperty Name="produto1" Relationship="Self.FK__pedido__produto__3B75D760" FromRole="pedido" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dataCadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="preco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pedido" Relationship="Self.FK__pedido__produto__3B75D760" FromRole="produto" ToRole="pedido" />
+  </EntityType>
+  <Association Name="FK__pedido__cliente__3A81B327">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pedido__produto__3B75D760">
+    <End Role="produto" Type="Self.produto" Multiplicity="0..1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="estudoangularEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" />
+    <EntitySet Name="produto" EntityType="Self.produto" />
+    <AssociationSet Name="FK__pedido__cliente__3A81B327" Association="Self.FK__pedido__cliente__3A81B327">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pedido__produto__3B75D760" Association="Self.FK__pedido__produto__3B75D760">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
