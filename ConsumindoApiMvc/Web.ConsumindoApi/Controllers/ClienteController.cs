@@ -15,7 +15,7 @@ namespace Web.ConsumindoApi.Controllers
 
         public ClienteController()
         {
-            client.BaseAddress = new Uri("http://localhost:58266/api/clientes");
+            client.BaseAddress = new Uri("http://localhost:51160/api/Clientes");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -24,7 +24,7 @@ namespace Web.ConsumindoApi.Controllers
         public ActionResult Index()
         {
             List<Cliente> clientes = new List<Cliente>();
-            HttpResponseMessage response = client.GetAsync("/api/clientes").Result;
+            HttpResponseMessage response = client.GetAsync("/api/Clientes").Result;
             if (response.IsSuccessStatusCode)
             {
                 clientes = response.Content.ReadAsAsync<List<Cliente>>().Result;
@@ -36,7 +36,7 @@ namespace Web.ConsumindoApi.Controllers
         // GET: Cliente/Details/5
         public ActionResult Details(int id)
         {
-            HttpResponseMessage response = client.GetAsync($"/api/clientes/{id}").Result;
+            HttpResponseMessage response = client.GetAsync($"/api/Clientes/{id}").Result;
             Cliente cliente = response.Content.ReadAsAsync<Cliente>().Result;
             if (cliente != null)
                 return View(cliente);

@@ -15,7 +15,7 @@ namespace Web.ConsumindoApi.Controllers
 
         public ProdutosController()
         {
-            client.BaseAddress = new Uri("http://localhost:58266/api/produtos");
+            client.BaseAddress = new Uri("http://localhost:56695/api/Produtos");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -24,7 +24,7 @@ namespace Web.ConsumindoApi.Controllers
         public ActionResult Index()
         {
             List<Produto> produtos = new List<Produto>();
-            HttpResponseMessage response = client.GetAsync("/api/produtos").Result;
+            HttpResponseMessage response = client.GetAsync("/api/Produtos").Result;
             if (response.IsSuccessStatusCode)
             {
                 produtos = response.Content.ReadAsAsync<List<Produto>>().Result;
