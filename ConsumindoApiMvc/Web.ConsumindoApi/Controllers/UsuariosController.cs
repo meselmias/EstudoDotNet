@@ -36,7 +36,12 @@ namespace Web.ConsumindoApi.Controllers
         // GET: Usuarios/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            HttpResponseMessage response = client.GetAsync($"/api/Usuarios/{id}").Result;
+            Usuario usuario = response.Content.ReadAsAsync<Usuario>().Result;
+            if (usuario != null)
+                return View(usuario);
+            else
+                return HttpNotFound();         
         }
 
         // GET: Usuarios/Create
@@ -47,13 +52,21 @@ namespace Web.ConsumindoApi.Controllers
 
         // POST: Usuarios/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Usuario usuario)
         {
             try
             {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                HttpResponseMessage response = client.PostAsJsonAsync<Usuario>("/api/Usuarios", usuario).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.erro = "Não foi possível realizar o cadastro";
+                    return View();
+                }
             }
             catch
             {
