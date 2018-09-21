@@ -113,3 +113,8 @@ C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\A
 C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.pdb
 C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.Migrations.Adicionado_Usuario.resources
 C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.csproj.GenerateResource.cache
+C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.Migrations.CriadoModelosdeprodutoemarca.resources
+C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.Migrations.Ajustado_Dbcontext.resources
+C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.Migrations.AlteradoTipopropriedadeNome.resources
+C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.Migrations.Adicionadopropriedadeemprodutos.resources
+C:\Users\mlima.MC1BR\Documents\GitHub\EstudoDotNet\WebApi\API.ConsumindoApiMVC\API.ConsumindoApiMVC\obj\Debug\API.ConsumindoApiMVC.Migrations.alteradopropriedadeprecoparastring.resources

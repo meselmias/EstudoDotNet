@@ -1,0 +1,43 @@
+﻿@model Web.ConsumindoApi.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Deseja mesmo excluir esse registro? </h3>
+<div>
+
+    <div class="container">
+        <div class="panel-group" style="margin-right: 66%;">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@Html.DisplayFor(model => model.Nome) </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.DisplayFor(model => model.Email)
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.Login)
+                           @Html.DisplayFor(model => model.Login)
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Confirmar" class="btn btn-danger" /> |   
+                <a href="@Url.Action("Index","Usuarios")" class="btn btn-primary" ><i class="icon-prev glyphicon-arrow-left"></i>Voltar</a>
+            </div>
+        }
+    </div>

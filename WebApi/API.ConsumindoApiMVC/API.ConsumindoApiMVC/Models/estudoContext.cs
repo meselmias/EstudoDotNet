@@ -9,5 +9,7 @@ namespace API.ConsumindoApiMVC.Models
     public class estudoContext : DbContext
     {
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Produto> Produtos{ get; set; }
+        public DbSet<Marca> Marcas { get; set; }
     }
 }

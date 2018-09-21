@@ -12,46 +12,44 @@ using API.ConsumindoApiMVC.Models;
 
 namespace API.ConsumindoApiMVC.Controllers
 {
-    [RoutePrefix("api/Usuarios")]
-    public class UsuariosController : ApiController
+    public class MarcasController : ApiController
     {
         private estudoContext db = new estudoContext();
 
-
-        // GET: api/Usuarios
-        public IQueryable<Usuario> GetUsuarios()
+        // GET: api/Marcas
+        public IQueryable<Marca> GetMarcas()
         {
-            return db.Usuarios;
+            return db.Marcas;
         }
 
-        // GET: api/Usuarios/5
-        [ResponseType(typeof(Usuario))]
-        public IHttpActionResult GetUsuario(int id)
+        // GET: api/Marcas/5
+        [ResponseType(typeof(Marca))]
+        public IHttpActionResult GetMarca(int id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Marca marca = db.Marcas.Find(id);
+            if (marca == null)
             {
                 return NotFound();
             }
 
-            return Ok(usuario);
+            return Ok(marca);
         }
 
-        // PUT: api/Usuarios/5
+        // PUT: api/Marcas/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUsuario(int id, Usuario usuario)
+        public IHttpActionResult PutMarca(int id, Marca marca)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.Id)
+            if (id != marca.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuario).State = EntityState.Modified;
+            db.Entry(marca).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +57,7 @@ namespace API.ConsumindoApiMVC.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsuarioExists(id))
+                if (!MarcaExists(id))
                 {
                     return NotFound();
                 }
@@ -72,38 +70,36 @@ namespace API.ConsumindoApiMVC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Usuarios
-        [ResponseType(typeof(Usuario))]
-        public IHttpActionResult PostUsuario(Usuario usuario)
+        // POST: api/Marcas
+        [ResponseType(typeof(Marca))]
+        public IHttpActionResult PostMarca(Marca marca)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Usuarios.Add(usuario);
+            db.Marcas.Add(marca);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuario.Id }, usuario);
+            return CreatedAtRoute("DefaultApi", new { id = marca.Id }, marca);
         }
 
-        // DELETE: api/Usuarios/5
-        [ResponseType(typeof(Usuario))]
-        public IHttpActionResult DeleteUsuario(int id)
+        // DELETE: api/Marcas/5
+        [ResponseType(typeof(Marca))]
+        public IHttpActionResult DeleteMarca(int id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Marca marca = db.Marcas.Find(id);
+            if (marca == null)
             {
                 return NotFound();
             }
 
-            db.Usuarios.Remove(usuario);
+            db.Marcas.Remove(marca);
             db.SaveChanges();
 
-            return Ok(usuario);
+            return Ok(marca);
         }
-
-
 
         protected override void Dispose(bool disposing)
         {
@@ -114,9 +110,9 @@ namespace API.ConsumindoApiMVC.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UsuarioExists(int id)
+        private bool MarcaExists(int id)
         {
-            return db.Usuarios.Count(e => e.Id == id) > 0;
+            return db.Marcas.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Web.ConsumindoApi.Models
+namespace API.ConsumindoApiMVC.Models
 {
-    public class Produto
+    [Table("Marcas")]
+    public class Marca
     {
-        #region Propriedades
+        #region Propriedades 
 
         public int Id { get; set; }
         public String Nome { get; set; }
-        public string Preco { get; set; }
-        public int MarcaId { get; set; }
 
         #endregion
 
         #region Relacionamentos
 
-        public virtual Marca Marca { get; set; }
+        public ICollection<Produto> Produtos { get; set; }
 
         #endregion
+
     }
 }

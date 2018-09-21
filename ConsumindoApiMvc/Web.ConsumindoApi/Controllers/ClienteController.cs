@@ -128,9 +128,7 @@ namespace Web.ConsumindoApi.Controllers
         {
 
             try
-            {
-                // TODO: Add delete logic here
-
+            {                
                 HttpResponseMessage response = client.DeleteAsync($"/api/clientes/{id}").Result;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     return RedirectToAction("Index");

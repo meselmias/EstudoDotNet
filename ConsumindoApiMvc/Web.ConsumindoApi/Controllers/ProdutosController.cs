@@ -15,10 +15,11 @@ namespace Web.ConsumindoApi.Controllers
 
         public ProdutosController()
         {
-            client.BaseAddress = new Uri("http://localhost:56695/api/Produtos");
+            client.BaseAddress = new Uri("http://localhost:51010/api/Produtos");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
+
 
         // GET: Produtos
         public ActionResult Index()
@@ -31,6 +32,7 @@ namespace Web.ConsumindoApi.Controllers
             }
 
             return View(produtos);
+         
         }
 
         // GET: Produtos/Details/5
@@ -47,13 +49,21 @@ namespace Web.ConsumindoApi.Controllers
 
         // POST: Produtos/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Produto produto)
         {
             try
             {
-                // TODO: Add insert logic here
+                HttpResponseMessage response = client.PostAsJsonAsync<Produto>("/api/Produtos", produto).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.erro = "Não foi possível realizar o cadastro";
+                    return View();
+                }
 
-                return RedirectToAction("Index");
             }
             catch
             {

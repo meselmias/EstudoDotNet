@@ -190,6 +190,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarcasController.cs" />
+    <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,8 +201,30 @@
     <Compile Include="Migrations\201809192007330_Adicionado_Usuario.Designer.cs">
       <DependentUpon>201809192007330_Adicionado_Usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809211940348_Criado Modelos de produto e marca.cs" />
+    <Compile Include="Migrations\201809211940348_Criado Modelos de produto e marca.Designer.cs">
+      <DependentUpon>201809211940348_Criado Modelos de produto e marca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809211949547_Ajustado_Dbcontext.cs" />
+    <Compile Include="Migrations\201809211949547_Ajustado_Dbcontext.Designer.cs">
+      <DependentUpon>201809211949547_Ajustado_Dbcontext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809212008481_Alterado Tipo propriedade Nome.cs" />
+    <Compile Include="Migrations\201809212008481_Alterado Tipo propriedade Nome.Designer.cs">
+      <DependentUpon>201809212008481_Alterado Tipo propriedade Nome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809212034436_Adicionado propriedade em produtos.cs" />
+    <Compile Include="Migrations\201809212034436_Adicionado propriedade em produtos.Designer.cs">
+      <DependentUpon>201809212034436_Adicionado propriedade em produtos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809212138347_alterado propriedade preco para string.cs" />
+    <Compile Include="Migrations\201809212138347_alterado propriedade preco para string.Designer.cs">
+      <DependentUpon>201809212138347_alterado propriedade preco para string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\estudoContext.cs" />
+    <Compile Include="Models\Marca.cs" />
+    <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -293,6 +317,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809192007330_Adicionado_Usuario.resx">
       <DependentUpon>201809192007330_Adicionado_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809211940348_Criado Modelos de produto e marca.resx">
+      <DependentUpon>201809211940348_Criado Modelos de produto e marca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809211949547_Ajustado_Dbcontext.resx">
+      <DependentUpon>201809211949547_Ajustado_Dbcontext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809212008481_Alterado Tipo propriedade Nome.resx">
+      <DependentUpon>201809212008481_Alterado Tipo propriedade Nome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809212034436_Adicionado propriedade em produtos.resx">
+      <DependentUpon>201809212034436_Adicionado propriedade em produtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809212138347_alterado propriedade preco para string.resx">
+      <DependentUpon>201809212138347_alterado propriedade preco para string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

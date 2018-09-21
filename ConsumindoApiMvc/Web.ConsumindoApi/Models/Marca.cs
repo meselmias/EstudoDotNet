@@ -5,20 +5,18 @@ using System.Web;
 
 namespace Web.ConsumindoApi.Models
 {
-    public class Produto
+    public class Marca
     {
-        #region Propriedades
+        #region Propriedades 
 
         public int Id { get; set; }
         public String Nome { get; set; }
-        public string Preco { get; set; }
-        public int MarcaId { get; set; }
 
         #endregion
 
         #region Relacionamentos
 
-        public virtual Marca Marca { get; set; }
+        public ICollection<Produto> Produtos { get; set; }
 
         #endregion
     }

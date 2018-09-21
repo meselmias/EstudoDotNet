@@ -20,11 +20,12 @@ namespace Web.ConsumindoApi.Controllers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+
         // GET: Usuarios
         public ActionResult Index()
         {
             List<Usuario> usuarios = new List<Usuario>();
-            HttpResponseMessage response = client.GetAsync("/api/Usuarios").Result;
+            HttpResponseMessage response = client.GetAsync("/api/Usuarios/listaUsuarios").Result;
             if (response.IsSuccessStatusCode)
             {
                 usuarios = response.Content.ReadAsAsync<List<Usuario>>().Result;
@@ -77,18 +78,31 @@ namespace Web.ConsumindoApi.Controllers
         // GET: Usuarios/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            HttpResponseMessage response = client.GetAsync($"/api/Usuarios/{id}").Result;
+            Usuario usuario = response.Content.ReadAsAsync<Usuario>().Result;
+            if (usuario != null)
+                return View(usuario);
+            else
+                return HttpNotFound();
         }
 
         // POST: Usuarios/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Usuario usuario)
         {
             try
             {
-                // TODO: Add update logic here
+                HttpResponseMessage response = client.PutAsJsonAsync<Usuario>($"/api/Usuarios/{id}", usuario).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Error = "Erro ao Editar Usuario";
+                    return View();
+                }
 
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -99,18 +113,31 @@ namespace Web.ConsumindoApi.Controllers
         // GET: Usuarios/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            HttpResponseMessage response = client.GetAsync($"/api/Usuarios/{id}").Result;
+            Usuario usuario = response.Content.ReadAsAsync<Usuario>().Result;
+            if (usuario != null)
+                return View(usuario);
+            else
+                return HttpNotFound();         
         }
 
         // POST: Usuarios/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Usuario usuario)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                HttpResponseMessage response = client.DeleteAsync($"/api/Usuarios/{id}").Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                  return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Error = "Erro ao excluir registro";
+                    return View();
+                }
+                
             }
             catch
             {
